@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <style>
+      .active {
+        color: red;
+      }
+    </style>
+
+    <div id="app">
+      <h1 v-bind:class="name">Hello Vue!</h1>
+      <input type="text" value="Hello Vue!" v-bind:disabled="disabled" />
+      <h1>{{ count + 2 }}</h1>
+    </div>
+
+    <script>
+      //v-bind는 html태그 내에서는 속성의 값으로 data를 사용할수 없는데 그것을 속성의 값으로 사용가능하게 만들어줌
+      const App = {
+        data() {
+          return {
+            name: "active",
+            disabled: null,
+            count: 0,
+          };
+        },
+      };
+
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

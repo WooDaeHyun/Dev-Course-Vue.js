@@ -26,3 +26,10 @@ $nextTick()
 3. beforeMount ->> 연결 직전 상태
 4. mounted
    https://v3-docs.vuejs-korea.org/guide/essentials/lifecycle.html
+
+템플릿 문법
+
+보간법
+Mustache(이중 중괄호) <span>{{ msg }}</span>
+v-once디렉티브 <span v-once>{{ msg }}</span> 1번만 렌더링되고 반응성이 사라짐
+원시 HTML

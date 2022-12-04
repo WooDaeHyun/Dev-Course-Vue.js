@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>HTML속성 이름도 동적으로 전달할 수 있다.</h1>
+      <h1 v-bind:[attr]="'active'">Hello Vue!</h1>
+    </div>
+
+    <script>
+      const App = {
+        data() {
+          return {
+            attr: "id",
+          };
+        },
+      };
+
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,3 +1,4 @@
+v-bind = : v-on = @
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -7,5 +8,19 @@
     <title>Document</title>
     <script src="https://unpkg.com/vue@next"></script>
   </head>
-  <body></body>
+  <body>
+    <div id="app">
+      <h1 :[attr]="'active'">Hello Vue!</h1>
+    </div>
+
+    <script>
+      //v-bind  >>>  :
+      //v-on >>> @
+      const App = {
+        data() {},
+      };
+
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
 </html>
