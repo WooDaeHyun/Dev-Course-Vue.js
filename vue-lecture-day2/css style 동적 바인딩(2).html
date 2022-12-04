@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1 :style="[ titleStyleObject, styleObject ]">hello vue!</h1>
+      <!-- 인라인 스타일은 - 을 꼭 '' 로 묶을 필요 없이 카멜케이스로 작성할 수 있음 -->
+      <!-- ex) background-color => backgroundColor 이러면 알아서 background-color로 읽음 -->
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            styleObject: {
+              color: "royalblue",
+              backgroundColor: "orange",
+            },
+            titleStyleObject: {
+              fontSize: "40px",
+              fontWeight: "bold",
+              color: "brown",
+            },
+          };
+        },
+      };
+
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
