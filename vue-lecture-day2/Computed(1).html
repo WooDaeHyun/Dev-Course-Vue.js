@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ count }}</h1>
+      <h2>{{ double }}</h2>
+      <h2>{{ double }}</h2>
+      <h2>{{ double }}</h2>
+      <h2>{{ double }}</h2>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            count: 3,
+          };
+        },
+        //계산된 데이터가 computed임(캐싱을 통해서 한 번 계산되면 캐싱해놓았다가, 다른 double에 다 넣어줌)
+        computed: {
+          double() {
+            return this.count * 2;
+          },
+        },
+      };
+
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
