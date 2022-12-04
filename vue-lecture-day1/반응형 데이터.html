@@ -8,11 +8,19 @@
     <script src="https://unpkg.com/vue@next"></script>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <h1>{{ count }}</h1>
+      <h2>{{ double }}</h2>
+    </div>
     <script>
+      //App은 하나의 컴포넌트다. 데이터는 함수여야 한다!!!!
       const App = {
+        // 반응형 데이터는 반드시 data메서드 내에 넣어주어야 한다.
         data() {
-          return {};
+          return {
+            count: 0,
+            double: null,
+          };
         },
       };
 
