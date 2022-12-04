@@ -19,13 +19,15 @@
             msg: "Hello Vue!",
           };
         },
-        beforeUnmount() {
-          // unmount는 반응성을 없애는 것임(여기서 app이 사용가능한 메서드임)
-          console.log("beforeUnmount");
+        beforeUpdate() {
+          // 데이터 수정 전 실행될 내용
+          console.log("beforeUpdate", this.msg); // 변경된 내용이 출력됨
+          console.log(document.querySelector("h1").textContent); // 변경 전 내용이 출력됨
         },
-        unmounted() {
-          // unmount는 반응성을 없애는 것임(여기서 app이 사용가능한 메서드임)
-          console.log("unmounted");
+        updated() {
+          // 데이터가 수정 된 이후의 실행될 내용
+          console.log("updated", this.msg); // 변경된 내용이 출력됨
+          console.log(document.querySelector("h1").textContent); // 변경 된 내용이 출력됨
         },
       };
       const app = Vue.createApp(App);
