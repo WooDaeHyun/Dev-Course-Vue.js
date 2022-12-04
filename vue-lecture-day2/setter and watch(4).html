@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ fullName }}</h1>
+      <h2>{{ firstName }}</h2>
+      <h2>{{ lastName }}</h2>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            firstName: "Leon",
+            lastName: "Miller",
+          };
+        },
+        computed: {
+          fullName: {
+            // 계산된 데이터이기 때문에 이걸 직접 변경해도 값이 변경되지 않음, 위 data에 의존하므로
+            get() {
+              return `${this.firstName} ${this.lastName}`;
+            },
+            set(newValue) {
+              console.log(newValue); // 'Jacob Kevin Smith'
+              const names = newValue.split(" "); // ['Jacob', 'Kevin', 'Smith']
+              this.firstName = names[0];
+              this.lastName = names[names.length - 1];
+            },
+          },
+        },
+        //반응성을 가지는 데이터를 watch에서 감시해서 데이터가 바뀌면 동작할 로직을 설정
+        watch: {
+          firstName(newValue, oldValue) {
+            // 두개의 인수를 받을 수 있음 (변경 후 데이터, 변경 전 데이터)를 받음!!
+            // 반응형 데이터!!이어야 한다.
+            //감시하고 싶은 데이터를 동일한 이름으로 함수로 만들면 된다.
+            console.log("watch:", newValue, oldValue);
+          },
+          fullName() {
+            console.log("watch:", this.fullName);
+          },
+        },
+      };
+
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
