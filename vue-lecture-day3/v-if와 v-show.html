@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <style>
+      /* 속성 선택자!!! */
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+    <div id="app">
+      <button @click="toggle">Toggle!</button>
+      <h1 v-show="isShow" v-cloak>{{ msg }}</h1>
+      <!-- v-if 와 v-show 겉으로 보기에 동작은 동일함!!  -->
+      <!-- v-show는 style="display: none" css로 보이지 않게 만드는 것임!! -->
+      <!-- v-if는 h1요소 자체를 사라지게 만들어 버림!! -->
+      <!-- v-if는 lazy라고 표헌함! -->
+      <!-- v-show 초기 렌더링 비용이 높음 그러나 그 이후 전환되는 비용이 낮음 -->
+      <!-- v-if는 초기 렌더링 비용이 낮으나 그 이후 전환되는 비용이 높음 -->
+      <!-- v-show는 일시적으로 {{ msg }} 메세지가 같이 보일수가 있다 그래서 v-cloak을 같이 사용하는것이 좋음 -->
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            msg: "Hello Vue!",
+            isShow: true,
+          };
+        },
+        methods: {
+          toggle() {
+            this.isShow = !this.isShow;
+          },
+        },
+      };
+
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

@@ -33,3 +33,8 @@ $nextTick()
 Mustache(이중 중괄호) <span>{{ msg }}</span>
 v-once디렉티브 <span v-once>{{ msg }}</span> 1번만 렌더링되고 반응성이 사라짐
 원시 HTML
+
+하나의 태그에 v-for v-if 같이 사용하지 말것!!! 같이 사용하면 v-if가 우선순위를 갖게 된다.
+같이 사용해야 하는경우에는
+<template>태그를 만들어서 v-for나 v-if 사용하고 그 하위 태그로 나머지 태그를 사용해서
+활용할 수 있다!!!!
