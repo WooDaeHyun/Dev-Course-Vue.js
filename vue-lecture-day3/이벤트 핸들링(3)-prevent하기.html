@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="https://google.com" target="_blank" @click.prevent.once="log"
+        >Google</a
+      >
+    </div>
+    <script>
+      // window.addEventListener("load", () => {
+      //   const aEl = document.querySelector("a");
+      //   aEl.addEventListener("click", (event) => {
+      //     event.preventDefault();
+      //   });
+      // });
+      const App = {
+        methods: {
+          log(event) {
+            console.log(event.target);
+          },
+        },
+      };
+
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

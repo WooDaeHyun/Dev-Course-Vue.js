@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="parent" @click.stop.capture="log"></div>
+      <div class="parent" @click.self="log"></div>
+      <!-- stop 수식어는 이벤트 버블링 방지하는 수식어 즉,click이벤트 발생시 위로 타고 올라가지 않음!! 그래서 상위 요소에서는 click 이벤트를 감지하지 못함 -->
+      <!-- @click.self는 event.target(이벤트를 발생시킨 요소)와 event.currentTarget(이벤트 핸들러가 등록된 요소)이 같은 경우메나 동작함!!-->
+      <!-- capture는 이벤트 발생을 감지하는 것임(자세한건 아직 잘 모르겠음) -->
+    </div>
+    <script>
+      window.addEventListener("click", () => {}, { capture: true });
+      const App = {};
+
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

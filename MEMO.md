@@ -38,3 +38,38 @@ v-once디렉티브 <span v-once>{{ msg }}</span> 1번만 렌더링되고 반응�
 같이 사용해야 하는경우에는
 <template>태그를 만들어서 v-for나 v-if 사용하고 그 하위 태그로 나머지 태그를 사용해서
 활용할 수 있다!!!!
+
+v-for에서 배열데이터는 (item, index(옵션)) in items 두개의 인수를 가질 수 있음
+v-for를 객체데이터를 반복하면 value값이 반복됨!!!
+v-for를 객체데이터를 반복하면 (value,name(옵션), index(옵션)) in myObject 하면 name에는 키가 반복된다. 단, 순서는 보장되지 않는다.
+v-for를 사용하면 반드시 key 속성과 함께 사용해야한다!!!
+
+배열 변경 감지
+반응형 데이터가 배열 데이터고 변이 메소드를 사용하면 화면을 갱신해 준다.
+원본 배열 변경하는 메소드
+push()
+pop()
+shift()
+unShift()
+복사해서 반환하는 배열
+filter(), concat(), slice()
+이걸 다시 원본 배열에 다시 할당하더라도, vue는 이것을 잘 최적화하여 바뀌는 부분만 렌더링 한다.
+(전체를 다시 렌더링하는 것이 아님)
+
+filter(number => number % 2 === 0)
+data() {
+return {
+numbers: [1,2,3,4,5]
+}
+},
+computed: {
+evenNumbers() {
+return this.numbers.filter(number => number % 2 === 0)
+}
+}
+이러면 this.numbers는 반응형 데이터고 해당 데이터가 변경되면 계산된 데이터인 computed에
+들어있는 데이터도 같이 변경됨
+
+범위가 있는 v-for
+v-for도 정수를 사용할 수 있다.
+<span v-for = "n in 10"> 주의할 점은 제로베이스가 아니라 1부터 시작함!!!!
