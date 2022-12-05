@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input @keyup.arrow-down.exact="log" />
+      <button @click.left="log">Click!</button>
+      <!-- 시스템 수식어!! -->
+      <!-- arrow-down을 눌러야지만 keyup이벤트가 발생함!! 이렇게 키 수식어만 추가해서 손쉽게 제어가 가능 -->
+      <!-- 여러개를 넣으면 그 키들을 다 눌러주어야 이벤트가 동작함!! -->
+      <!-- 참고로 meta 키 맥북은 command는 키다운 이벤트와 함께 사용할 수 있다 즉, keyup에서는 동작하지 않음!! -->
+      <!-- 그리고 정확하게 arrow-down만 눌러야지만 동작하는게 아님!! 다른 키와 같이 눌러도 동작함 그래서 사용하는게 exact수식어임 -->
+      <!-- @keyup.arrow-down.exact 이러면 arrow-down인 경우에만!! 동작함-->
+      <!-- 마우스는 마우스 버튼 수식어도 있음 left,right,middle -->
+    </div>
+    <script>
+      const App = {
+        methods: {
+          log(event) {
+            console.log(event);
+          },
+        },
+      };
+
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
